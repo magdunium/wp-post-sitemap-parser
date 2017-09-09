@@ -7,7 +7,7 @@ urls = ['http://yourdomain.pl/post-sitemap.xml','http://yourdomain.pl/post-sitem
 
 
 for url in urls:
-    html = requests.get(url)
+    html = requests.get(url, timeout = 5)
 
     if html.status_code != 200:
         print url, html.status_code
