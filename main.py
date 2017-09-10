@@ -2,9 +2,16 @@
 
 from bs4 import BeautifulSoup
 import requests
+import os
 
-urls = ['http://yourdomain.pl/post-sitemap.xml','http://yourdomain.pl/post-sitemap.xml']
+urls = []
 
+if os.path.isfile('url-list.txt'):
+    with open('url-list.txt') as f:
+        for line in f:
+            urls.append(line)
+else:
+    print 'No "url-list.txt" file found. Create file "url-list.txt" to run the program'
 
 for url in urls:
     html = requests.get(url, timeout = 5)
