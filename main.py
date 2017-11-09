@@ -5,6 +5,7 @@ import requests
 import os
 
 urls = []
+headers = {"User-Agent":"Mozilla/5.0"}
 
 if os.path.isfile('url-list.txt'):
     with open('url-list.txt') as f:
@@ -14,7 +15,7 @@ else:
     print 'No "url-list.txt" file found. Create file "url-list.txt" to run the program'
 
 for url in urls:
-    html = requests.get(url, timeout = 5)
+    html = requests.get(url, timeout = 5, headers=headers)
 
     if html.status_code != 200:
         print url, html.status_code
